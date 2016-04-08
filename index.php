@@ -21,7 +21,18 @@ $an_adult->setBirthday('1972-10-12');
 
 $an_adult1 = new Adult('Daly Abood','Female');
 $an_adult1->setBirthday('1973-04-18');
-$an_adult->getMarrid(new GetMarrid($an_adult, $an_adult1));
+$an_adult->getMarrid($family = new Family($an_adult, $an_adult1));
+$family->makeBaby('Maiar');
+$family->adoptBaby('Musse');
+$family->adoptBaby('Manar');
+
+
+$an_adult3 = new Adult('Yasir Rashid','Male', true);
+$an_adult3->setBirthday('1982-01-01');
+
+
+
+
 //$an_adult1->getCivilStatus();
 
 // $an_adult->getMarrid(new GetMarrid($an_adult, $an_adult1));
@@ -48,7 +59,10 @@ $obj = [
   'birthday' => $an_adult->getBirthday(),
   'gender' => $an_adult->getGender(),
   'civil_status' => $an_adult->getCivilStatus(),
+  'partner_name' => $an_adult->partner_name,
   'age' => $an_adult->getAge(),
+  'royal' => $an_adult->isRoyal(),
+  'children' => $an_adult->getChildren()
 ];
 
 $obj1 = [
@@ -56,11 +70,25 @@ $obj1 = [
   'birthday' => $an_adult1->getBirthday(),
   'gender' => $an_adult1->getGender(),
   'civil_status' => $an_adult1->getCivilStatus(),
+  'partner_name' => $an_adult1->partner_name,
   'age' => $an_adult1->getAge(),
+  'royal' => $an_adult1->isRoyal(),
+  'children' => $an_adult1->getChildren()
+];
+
+$obj3 = [
+  'name' => $an_adult3->getName(),
+  'birthday' => $an_adult3->getBirthday(),
+  'gender' => $an_adult3->getGender(),
+  'civil_status' => $an_adult3->getCivilStatus(),
+  'royal' => $an_adult3->isRoyal(),
+  'children' => $an_adult3->getChildren(),
+  'age' => $an_adult3->getAge()
+
 ];
 echo "<br />";
 
-array_push($persons, $obj, $obj1);
+array_push($persons, $obj, $obj1, $obj3);
 
     $toJson =  json_encode($persons, JSON_PRETTY_PRINT);
 
@@ -70,11 +98,20 @@ $pers_obj = file_get_contents("json_db.json");
 $pers_json = json_decode($pers_obj, true);
 
 
-// foreach ($persons as $key => $value) {
-//   echo $value->name . '<br />';
-//   echo $value->gender . '<br />';
-//   echo $value->age . '<br />';
-// }
+foreach ($persons as $key => $value) {
+  echo "<ul>";
+  echo '<li>'. $value['name'] . '</li><br />';
+  echo '<li>'. $value['birthday'] . '</li><br />';
+  echo '<li>'. $value['gender'] . '</li><br />';
+  echo '<li>'. $value['civil_status'] . '</li><br />';
+  echo '<li>'. $value['age'] . '</li><br />';
+  echo '<li>'. $value['royal'] . '</li><br />';
+  echo '<li>'. $value['children'] . '</li><br />';
+
+  echo "</ul>";
+  // echo $value->gender . '<br />';
+  // echo $value->age . '<br />';
+}
 
 
 echo "<pre>";
