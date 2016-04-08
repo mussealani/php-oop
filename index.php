@@ -10,13 +10,87 @@ error_reporting(-1);
 /*
    KEJSARE OCH KEJSARINNOR
    ========================================================================== */
+  if (!file_exists('json_db.json')) {
+    $fp = fopen('json_db.json', 'w+');
+    fclose($fp);
+  };
 
-$an_adult = new Adult('Mohamad Rashid', 43, 'Male');
+$an_adult = new Adult('Mohamad Rashid','Male');
 $an_adult->setBirthday('1972-10-12');
-echo $an_adult->getName() . ' ' . $an_adult->getBirthday();
+//$an_adult->getCivilStatus();
+
+$an_adult1 = new Adult('Daly Abood','Female');
+$an_adult1->setBirthday('1973-04-18');
+$an_adult->getMarrid(new GetMarrid($an_adult, $an_adult1));
+//$an_adult1->getCivilStatus();
+
+// $an_adult->getMarrid(new GetMarrid($an_adult, $an_adult1));
+// echo 'Full Name: ' . $an_adult->getName() .
+//             '<br>' . 'Date of birth: ' . $an_adult->getBirthday() .
+//             '<br>' . 'Gneder: ' . $an_adult->getGender() .
+//             // '<br />Age: ' . $an_adult->getAge() .
+//             '<br />Civil Status: ' . $an_adult->getCivilStatus();
+
+//  echo "<br /><br />";
+
+
+// $an_adult1 = new Adult('Daly Abood','Female');
+// $an_adult1->setBirthday('1973-04-18');
+// echo 'Full Name: ' . $an_adult1->getName() .
+//             '<br>' . 'Date of birth: ' . $an_adult1->getBirthday() .
+//             '<br>' . 'Gneder: ' . $an_adult1->getGender() .
+//             // '<br />Age: ' . $an_adult1->getAge() .
+//             '<br />Civil Status: ' . $an_adult1->getCivilStatus() . $an_adult1->getMarrid(new GetMarrid($an_adult, $an_adult1));
+
+$persons = [];
+$obj = [
+  'name' => $an_adult->getName(),
+  'birthday' => $an_adult->getBirthday(),
+  'gender' => $an_adult->getGender(),
+  'civil_status' => $an_adult->getCivilStatus(),
+  'age' => $an_adult->getAge(),
+];
+
+$obj1 = [
+  'name' => $an_adult1->getName(),
+  'birthday' => $an_adult1->getBirthday(),
+  'gender' => $an_adult1->getGender(),
+  'civil_status' => $an_adult1->getCivilStatus(),
+  'age' => $an_adult1->getAge(),
+];
+echo "<br />";
+
+array_push($persons, $obj, $obj1);
+
+    $toJson =  json_encode($persons, JSON_PRETTY_PRINT);
+
+    file_put_contents('json_db.json',$toJson);
+
+$pers_obj = file_get_contents("json_db.json");
+$pers_json = json_decode($pers_obj, true);
+
+
+// foreach ($persons as $key => $value) {
+//   echo $value->name . '<br />';
+//   echo $value->gender . '<br />';
+//   echo $value->age . '<br />';
+// }
+
+
+echo "<pre>";
+
+print_r($pers_obj);
 
 
 
+//$persons['fullName'] = $an_adult->getName();
+
+
+// $getMarrid = new GetMarrid($an_adult, $an_adult1);
+// echo $getMarrid;
+
+// echo "<pre>";
+// print_r($getMarrid);
 
 
 /*

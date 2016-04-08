@@ -17,12 +17,7 @@ class Human
 
   public function getName()
   {
-    return $this->name;
-  }
-
-  public function getAge()
-  {
-    return $this->age;
+    return is_string($this->name) ? $this->name : ('Your name expects a string as "A-Z / a-z"');
   }
 
   public function getGender()

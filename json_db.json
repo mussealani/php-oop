@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Mohamad Rashid",
+        "birthday": {
+            "date": "1972-10-12 02:42:43.000000",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "gender": "Male",
+        "civil_status": "Married",
+        "age": 44
+    },
+    {
+        "name": "Daly Abood",
+        "birthday": {
+            "date": "1973-04-18 02:42:43.000000",
+            "timezone_type": 3,
+            "timezone": "Europe\/Berlin"
+        },
+        "gender": "Female",
+        "civil_status": "Married",
+        "age": 43
+    }
+]
