@@ -4,7 +4,8 @@ class Adult extends Human
   public $partner_name;
   protected $royal;
   public $children;
-  public function __construct($name, $gender, $royal = false)
+  public $adopted;
+  public function __construct()
   {
     $this->name   = $name;
     $this->gender = $gender;
