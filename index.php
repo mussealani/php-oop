@@ -17,19 +17,10 @@ error_reporting(-1);
 
 $moh = new Male('Mohamad', 'Rashid', true);
 $moh->setBirthday('1972-10-12');
-// echo $moh->getName() . '<br>';
-// echo $moh->getBirthday() . '<br />';
-// echo $moh->getGender() . '<br />';
-// echo $moh->getAge() . '<br />';
-// echo $moh->getCivilStatus() . '<br /><br /><br />';
 
 $dalya = new Female('Dalya', 'Abood');
 $dalya->setBirthday('1973-04-18');
-// echo $dalya->getName() . '<br>';
-// echo $dalya->getBirthday() . '<br />';
-// echo $dalya->getGender() . '<br />';
-// echo $dalya->getAge() . '<br />';
-// echo $dalya->getCivilStatus() . '<br />';
+
 $moh->getMarrid($family = new Family($moh, $dalya));
 
 $family->makeBaby($maiar = new Child_male('Maiar'));
